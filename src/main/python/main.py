@@ -1,4 +1,5 @@
 from src.main.python.api.Ingestor import Ingestor
+from src.main.python.domain.Column import Column
 from src.main.python.domain.DataTypesEnum import DataTypesEnum
 
 
@@ -6,9 +7,17 @@ def main():
     print("Start ingest flow.... Creating ingestor object....")
     ingestor = Ingestor()
 
-    ingestor.add_column("Subject", DataTypesEnum.String)
-    ingestor.add_column("Marks", DataTypesEnum.Integer)
+    # Add string and integer column
+
+    ingestor.add_column(Column("Subject", DataTypesEnum.String))
+    ingestor.add_column(Column("Marks", DataTypesEnum.Integer))
     print("Added columns to ingestor....")
+
+    # Add Date Range column
+    ingestor.add_column(Column("DateTime", DataTypesEnum.DateTime))
+    ingestor.add_column(Column("Date", DataTypesEnum.Date))
+    ingestor.add_column(Column("Time", DataTypesEnum.Time))
+    ingestor.add_column(Column("Epoch", DataTypesEnum.Epoch))
 
     ingestor.generate_data(1000)
     print("Generated data....")

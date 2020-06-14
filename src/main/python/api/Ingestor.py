@@ -1,5 +1,6 @@
 import pandas as pd
 
+from src.main.python.domain.Column import Column
 from src.main.python.domain.DataTypesEnum import DataTypesEnum
 from src.main.python.domain.SinkTypes import SinkTypes
 from src.main.python.generator.Generator import Generator
@@ -13,8 +14,8 @@ class Ingestor:
         self.data_frame = pd.DataFrame()
         self.sink_file_path = None
 
-    def add_column(self, column_name: str, column_type: DataTypesEnum):
-        self.columns[column_name] = column_type
+    def add_column(self, column: Column):
+        self.columns[column.name] = column.datatype
 
     def get_columns(self):
         return self.columns
