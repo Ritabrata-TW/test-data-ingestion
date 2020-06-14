@@ -9,8 +9,10 @@ def main():
     ingestor.add_column("Subject", "String")
     ingestor.add_column("Marks", "Integer")
 
-    data_frame = ingestor.generate_data(1000)
-    print(data_frame.head())
+    ingestor.generate_data(1000)
+
+    ingestor.add_sink_filepath("/Users/ritabrata/Projects/Open_Source/test_data_ingest/out/output_file.csv")
+    ingestor.write_data()
 
 
 if __name__ == '__main__':
