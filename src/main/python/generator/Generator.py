@@ -1,7 +1,8 @@
 import pandas as pd
 
-from src.main.python.generator.StringGenerator import StringGenerator
+from src.main.python.domain.DataTypesEnum import DataTypesEnum
 from src.main.python.generator.NumberGenerator import NumberGenerator
+from src.main.python.generator.StringGenerator import StringGenerator
 
 
 class Generator:
@@ -17,9 +18,9 @@ class Generator:
         for column_name, column_type in self.columns.items():
             generator = None
 
-            if column_type == 'String':
+            if column_type == DataTypesEnum.String:
                 generator = StringGenerator(column_name, self.row_count)
-            elif column_type == 'Integer':
+            elif column_type == DataTypesEnum.Integer:
                 generator = NumberGenerator(column_name, self.row_count)
 
             data_frame = generator.generate()
